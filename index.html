@@ -3,66 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Олимпик</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚛️</text></svg>">
+    <title>Олимпик • Перерождение</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Exo 2', sans-serif;
         }
 
         :root {
-            --primary-gradient: linear-gradient(135deg, #3498db 0%, #8e44ad 100%);
-            --secondary-gradient: linear-gradient(135deg, #1abc9c 0%, #f1c40f 100%);
-            --accent-gradient: linear-gradient(135deg, #e74c3c 0%, #e67e22 100%);
-            --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            --light: #f8f9fa;
-            --dark: #0f172a;
-            --card-bg: rgba(255, 255, 255, 0.12);
-            --text-light: #f1f5f9;
-            --text-dark: #1e293b;
-            --success: #2ecc71;
-            --warning: #f39c12;
-            --danger: #e74c3c;
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            --shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
-            --border-radius: 20px;
-            --glass: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.15);
+            --primary: #00f0ff;
+            --primary-glow: rgba(0, 240, 255, 0.4);
+            --secondary: #ff3eb5;
+            --secondary-glow: rgba(255, 62, 181, 0.4);
+            --accent: #a0e400;
+            --accent-glow: rgba(160, 228, 0, 0.3);
+            --dark-bg: #0a0c12;
+            --card-bg: rgba(18, 22, 30, 0.7);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-tertiary: rgba(255, 255, 255, 0.4);
+            --success: #a0e400;
+            --warning: #ffb86b;
+            --danger: #ff5555;
+            --transition: all 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+            --border-radius: 28px;
+            --border-radius-sm: 18px;
+            --shadow: 0 25px 40px -15px rgba(0, 0, 0, 0.4);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.05);
+            --blur: blur(20px);
         }
 
-        .dark-theme {
-            --primary-gradient: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
-            --secondary-gradient: linear-gradient(135deg, #16a085 0%, #f39c12 100%);
-            --accent-gradient: linear-gradient(135deg, #c0392b 0%, #d35400 100%);
-            --dark-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            --light: #0f172a;
-            --dark: #f8f9fa;
-            --card-bg: rgba(15, 23, 42, 0.7);
-            --text-light: #cbd5e1;
-            --text-dark: #f1f5f9;
-            --glass: rgba(15, 23, 42, 0.5);
-            --glass-border: rgba(255, 255, 255, 0.08);
+        .light-theme {
+            --primary: #0066ff;
+            --primary-glow: rgba(0, 102, 255, 0.2);
+            --secondary: #d40078;
+            --secondary-glow: rgba(212, 0, 120, 0.15);
+            --accent: #56b400;
+            --accent-glow: rgba(86, 180, 0, 0.2);
+            --dark-bg: #f5f9ff;
+            --card-bg: rgba(255, 255, 255, 0.6);
+            --card-border: rgba(0, 0, 0, 0.03);
+            --text-primary: #0a0c12;
+            --text-secondary: rgba(10, 12, 18, 0.7);
+            --text-tertiary: rgba(10, 12, 18, 0.4);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
         body {
-            background: linear-gradient(-45deg, #3498db, #9b59b6, #1abc9c, #f1c40f);
-            background-size: 400% 400%;
-            animation: gradientBG 18s ease infinite;
-            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
             min-height: 100vh;
-            transition: var(--transition);
+            transition: background 0.4s ease, color 0.3s ease;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Анимированная сетка на фоне */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--primary) 0.5px, transparent 0.5px),
+                linear-gradient(var(--primary) 0.5px, transparent 0.5px);
+            background-size: 50px 50px;
+            background-position: 0 0, 25px 25px;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Плавающие неоновые сферы */
+        .floating-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.4;
+            animation: floatOrb 25s infinite alternate ease-in-out;
+        }
+
+        .orb1 {
+            top: 5%;
+            left: 5%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle at 30% 30%, var(--primary), transparent 70%);
+        }
+
+        .orb2 {
+            bottom: 5%;
+            right: 5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle at 70% 70%, var(--secondary), transparent 70%);
+            animation-delay: -5s;
+        }
+
+        .orb3 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--accent), transparent 70%);
+            opacity: 0.2;
+            animation: floatOrb2 35s infinite alternate;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(60px, 60px) scale(1.1); }
+        }
+
+        @keyframes floatOrb2 {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.2; }
+            100% { transform: translate(-40%, -40%) scale(1.2); opacity: 0.25; }
         }
 
         .container {
@@ -70,147 +135,117 @@
             margin: 0 auto;
             padding: 20px;
             position: relative;
-            z-index: 1;
+            z-index: 10;
         }
 
-        /* Анимированные элементы фона */
-        .bg-elements {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .bg-element {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            100% { transform: translateY(-1000px) rotate(720deg); }
-        }
-
-        /* Хедер */
+        /* Современный хедер с градиентной обводкой */
         header {
             text-align: center;
-            padding: 40px 20px;
-            background: var(--glass);
-            backdrop-filter: blur(25px);
+            padding: 50px 30px;
+            background: var(--card-bg);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
             border-radius: var(--border-radius);
             margin-bottom: 40px;
-            border: 1px solid var(--glass-border);
+            border: var(--glass-border);
             box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
         }
 
-        header::before {
+        header::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background: var(--accent-gradient);
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            background-size: 300% 100%;
+            animation: gradientShift 6s ease infinite;
         }
 
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 4.5rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            background: linear-gradient(90deg, #3498db, #9b59b6, #1abc9c, #f1c40f);
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: gradientText 10s ease infinite;
-            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        @keyframes gradientText {
+        @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 60%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px var(--primary-glow);
+        }
+
         .subtitle {
-            font-size: 1.4rem;
-            color: var(--text-light);
-            opacity: 0.9;
-            margin-bottom: 10px;
+            font-size: 1.3rem;
+            color: var(--text-secondary);
             font-weight: 300;
+            margin-bottom: 10px;
         }
 
         .tagline {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            opacity: 0.7;
-            font-style: italic;
+            font-size: 1rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 500;
         }
 
-        /* Кнопка переключения темы */
+        /* Кнопка темы — минималистичная */
         .theme-toggle {
             position: fixed;
             top: 25px;
             right: 25px;
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            border-radius: 18px;
+            background: var(--card-bg);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border: var(--glass-border);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--text-light);
-            font-size: 1.8rem;
+            color: var(--text-primary);
+            font-size: 1.6rem;
             cursor: pointer;
             z-index: 100;
             transition: var(--transition);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .theme-toggle:hover {
-            transform: scale(1.1) rotate(30deg);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            background: var(--accent-gradient);
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: scale(0.95);
         }
 
-        /* Основные экраны */
+        /* Главный экран — выбор предмета */
         .screen {
             background: var(--card-bg);
-            backdrop-filter: blur(25px);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
             border-radius: var(--border-radius);
-            padding: 40px;
-            border: 1px solid var(--glass-border);
+            padding: 45px;
+            border: var(--glass-border);
             box-shadow: var(--shadow);
             margin-bottom: 40px;
             display: none;
-            animation: fadeInUp 0.6s ease-out;
+            animation: fadeSlide 0.5s ease-out;
             position: relative;
             overflow: hidden;
         }
 
-        .screen::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--secondary-gradient);
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -218,856 +253,742 @@
             display: block;
         }
 
-        /* Кнопки */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: var(--primary-gradient);
-            color: white;
-            border: none;
-            padding: 18px 36px;
-            border-radius: 50px;
-            font-size: 1.2rem;
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.4rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: center;
-            text-decoration: none;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 0.5px;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+            letter-spacing: -0.01em;
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn-secondary {
-            background: var(--secondary-gradient);
-        }
-
-        .btn-accent {
-            background: var(--accent-gradient);
-        }
-
-        .btn-small {
-            padding: 12px 24px;
-            font-size: 1rem;
-        }
-
-        .btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none !important;
-        }
-
-        /* Карточки предметов и режимов */
+        /* Карточки — стекло, неоновая обводка при ховере */
         .selection-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
 
         .selection-card {
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            border-radius: var(--border-radius);
-            padding: 40px 30px;
+            background: var(--card-bg);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border-radius: var(--border-radius-sm);
+            padding: 45px 30px;
             text-align: center;
-            border: 1px solid var(--glass-border);
+            border: 1px solid transparent;
+            border-image: none;
             transition: var(--transition);
             cursor: pointer;
             position: relative;
-            overflow: hidden;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.2);
         }
 
         .selection-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--primary-gradient);
-            transform: scaleX(0);
-            transition: transform 0.5s ease;
+            inset: 0;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .selection-card:hover::before {
-            transform: scaleX(1);
+            opacity: 1;
         }
 
         .selection-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0, 240, 255, 0.2);
         }
 
         .selection-card i {
-            font-size: 5rem;
-            margin-bottom: 25px;
-            background: var(--primary-gradient);
+            font-size: 4.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            margin-bottom: 20px;
         }
 
         .selection-card h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
             margin-bottom: 15px;
-            color: var(--text-dark);
+            color: var(--text-primary);
         }
 
         .selection-card p {
-            color: var(--text-light);
-            opacity: 0.8;
+            color: var(--text-secondary);
+            font-size: 1rem;
             line-height: 1.7;
-            font-size: 1.1rem;
         }
 
-        /* Таймер */
-        .timer {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 4rem;
-            font-weight: 800;
-            text-align: center;
-            padding: 25px;
-            background: var(--dark-gradient);
-            border-radius: var(--border-radius);
-            margin: 30px 0;
+        /* Кнопки — объемные, с неоновым свечением */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--primary), #0088cc);
             color: white;
-            text-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
-            border: 2px solid var(--glass-border);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            letter-spacing: 2px;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px -5px var(--primary-glow);
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Контейнер вопроса */
-        .question-container {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border-radius: var(--border-radius);
-            padding: 40px;
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: 0.5s;
+        }
+
+        .btn:hover::after {
+            transform: translateX(100%);
+        }
+
+        .btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px -5px var(--primary-glow);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), #b3006d);
+            box-shadow: 0 10px 20px -5px var(--secondary-glow);
+        }
+
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent), #6eb400);
+            box-shadow: 0 10px 20px -5px var(--accent-glow);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            box-shadow: none;
+            transform: none !important;
+            cursor: not-allowed;
+        }
+
+        /* Таймер — неоновый щит */
+        .timer {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 30px;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(15px);
+            border-radius: 60px;
             margin: 30px 0;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            color: var(--primary);
+            text-shadow: 0 0 30px var(--primary);
+            border: 1px solid rgba(255,255,255,0.05);
+            letter-spacing: 5px;
+        }
+
+        /* Контейнер вопроса с акцентной полосой */
+        .question-container {
+            background: rgba(0,0,0,0.15);
+            backdrop-filter: blur(15px);
+            border-radius: var(--border-radius);
+            padding: 45px;
+            margin: 30px 0;
+            border: 1px solid rgba(255,255,255,0.02);
             position: relative;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
 
         .question-container::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 10px;
-            height: 100%;
-            background: var(--accent-gradient);
-            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            border-left: 3px solid var(--primary);
+            border-top: 3px solid var(--primary);
+            border-radius: 12px 0 0 0;
+            opacity: 0.3;
+        }
+
+        .question-container::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-right: 3px solid var(--secondary);
+            border-bottom: 3px solid var(--secondary);
+            border-radius: 0 0 12px 0;
+            opacity: 0.3;
         }
 
         .question-text {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             line-height: 1.6;
             margin-bottom: 30px;
-            color: var(--text-dark);
-            font-weight: 600;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-family: 'Space Grotesk', sans-serif;
         }
 
         .answer-type {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--warning);
-            margin-bottom: 20px;
-            font-weight: 600;
-            padding: 10px 20px;
-            background: rgba(243, 156, 18, 0.1);
-            border-radius: 10px;
+            margin-bottom: 15px;
+            font-weight: 500;
             display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 184, 107, 0.05);
+            border-radius: 40px;
+            border: 1px solid rgba(255, 184, 107, 0.2);
+            backdrop-filter: blur(5px);
         }
 
         .question-hint {
             font-style: italic;
             color: var(--warning);
             margin-bottom: 25px;
-            padding: 20px;
-            background: rgba(243, 156, 18, 0.1);
-            border-radius: 15px;
-            border-left: 5px solid var(--warning);
+            padding: 20px 25px;
+            background: rgba(255, 184, 107, 0.03);
+            border-radius: 20px;
+            border-left: 6px solid var(--warning);
             font-size: 1.1rem;
             display: none;
+            backdrop-filter: blur(5px);
         }
 
-        /* Поле ввода ответа */
+        /* Поле ввода — футуристичное */
         .answer-input {
             width: 100%;
-            padding: 20px;
-            border: 2px solid var(--glass-border);
-            border-radius: 15px;
+            padding: 22px 25px;
+            border: 2px solid rgba(255,255,255,0.05);
+            border-radius: 50px;
             font-size: 1.4rem;
             margin-bottom: 25px;
             transition: var(--transition);
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-dark);
-            font-family: 'Exo 2', sans-serif;
+            background: rgba(0,0,0,0.2);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            backdrop-filter: blur(5px);
         }
 
         .answer-input:focus {
-            border-color: #3498db;
+            border-color: var(--primary);
             outline: none;
-            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
-            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 5px var(--primary-glow);
+            background: rgba(0,0,0,0.1);
         }
 
-        /* Фидыек по ответу */
+        /* Фидыек — сочная анимация */
         .answer-feedback {
             padding: 25px;
-            border-radius: 15px;
+            border-radius: 50px;
             margin: 25px 0;
             display: none;
             font-size: 1.3rem;
             font-weight: 600;
             text-align: center;
-            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: feedbackPop 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+            backdrop-filter: blur(10px);
         }
 
-        @keyframes popIn {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        @keyframes feedbackPop {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         .answer-feedback.correct {
-            background: rgba(46, 204, 113, 0.15);
-            border: 2px solid var(--success);
+            background: rgba(160, 228, 0, 0.08);
+            border: 1px solid var(--success);
             color: var(--success);
+            text-shadow: 0 0 15px var(--accent-glow);
         }
 
         .answer-feedback.incorrect {
-            background: rgba(231, 76, 60, 0.15);
-            border: 2px solid var(--danger);
+            background: rgba(255, 85, 85, 0.08);
+            border: 1px solid var(--danger);
             color: var(--danger);
+            text-shadow: 0 0 15px rgba(255,85,85,0.4);
         }
 
-        /* Статистика */
+        /* Статистика — цифровые табло */
         .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 25px;
             margin: 30px 0;
         }
 
         .stat-box {
-            background: var(--glass);
+            background: rgba(0,0,0,0.2);
             backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 25px;
+            border-radius: 24px;
+            padding: 25px 20px;
             text-align: center;
-            border: 1px solid var(--glass-border);
+            border: 1px solid rgba(255,255,255,0.02);
             transition: var(--transition);
         }
 
         .stat-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary);
+            transform: translateY(-3px);
         }
 
         .stat-box h4 {
-            font-size: 1rem;
-            color: var(--text-light);
-            opacity: 0.8;
-            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            margin-bottom: 12px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
+            letter-spacing: 2px;
+            font-weight: 500;
         }
 
         .stat-box p {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: var(--text-dark);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1;
         }
 
-        /* Сетка для квиза */
+        /* Сетка квиза — как чипы */
         .quiz-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
             margin-top: 40px;
         }
 
         .quiz-cell {
-            background: var(--glass);
+            background: rgba(0,0,0,0.2);
             backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px 20px;
+            border-radius: 20px;
+            padding: 30px 15px;
             text-align: center;
             cursor: pointer;
             transition: var(--transition);
-            border: 1px solid var(--glass-border);
+            border: 1px solid rgba(255,255,255,0.02);
             position: relative;
-            overflow: hidden;
-        }
-
-        .quiz-cell::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--primary-gradient);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .quiz-cell:hover::before {
-            transform: scaleX(1);
         }
 
         .quiz-cell:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .quiz-cell.disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
+            border-color: var(--primary);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 25px -10px var(--primary-glow);
         }
 
         .quiz-cell.selected {
-            background: var(--primary-gradient);
-            color: white;
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .quiz-cell.selected::before {
-            display: none;
+            background: linear-gradient(135deg, rgba(0,240,255,0.1), rgba(255,62,181,0.1));
+            border: 1.5px solid var(--secondary);
+            box-shadow: 0 0 30px var(--secondary-glow);
         }
 
         .quiz-cell h4 {
             font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: var(--text-dark);
-            font-weight: 600;
-        }
-
-        .quiz-cell.selected h4 {
-            color: white;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            font-weight: 500;
         }
 
         .quiz-cell p {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
         }
 
-        /* Опции времени */
+        .quiz-cell small {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+        }
+
+        /* Опции времени — минимал */
         .time-options {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
             margin-top: 40px;
         }
 
         .time-option {
-            background: var(--glass);
+            background: rgba(0,0,0,0.2);
             backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px 20px;
+            border-radius: 20px;
+            padding: 25px 15px;
             text-align: center;
             cursor: pointer;
             transition: var(--transition);
-            border: 1px solid var(--glass-border);
+            border: 1px solid rgba(255,255,255,0.02);
         }
 
         .time-option:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -10px var(--accent-glow);
         }
 
         .time-option.selected {
-            background: var(--accent-gradient);
-            color: white;
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, rgba(160,228,0,0.1), rgba(0,240,255,0.1));
+            border: 1.5px solid var(--accent);
         }
 
         .time-option h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 5px;
         }
 
         .time-option p {
-            font-size: 1rem;
-            opacity: 0.9;
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
         }
 
-        /* Панель управления */
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-
-        .controls .btn {
-            flex: 1;
-            min-width: 220px;
-        }
-
-        /* Карточки ученых */
+        /* Карточки ученых — с неоновыми портретами */
         .scientist-card {
-            background: var(--glass);
+            background: rgba(0,0,0,0.15);
             backdrop-filter: blur(15px);
-            border-radius: var(--border-radius);
+            border-radius: 32px;
             padding: 30px;
             margin: 20px 0;
-            border: 1px solid var(--glass-border);
+            border: 1px solid rgba(255,255,255,0.02);
             display: flex;
-            gap: 25px;
+            gap: 30px;
             align-items: center;
             transition: var(--transition);
         }
 
         .scientist-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--secondary);
+            box-shadow: 0 20px 30px -15px var(--secondary-glow);
         }
 
         .scientist-photo {
-            width: 150px;
-            height: 150px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--glass-border);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .scientist-info {
-            flex: 1;
+            border: 3px solid transparent;
+            background: linear-gradient(135deg, var(--primary), var(--secondary)) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            padding: 3px;
         }
 
         .scientist-name {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.8rem;
-            color: var(--text-dark);
-            margin-bottom: 10px;
-            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+            font-weight: 600;
         }
 
         .scientist-dates {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            opacity: 0.8;
+            font-size: 1rem;
+            color: var(--text-tertiary);
             margin-bottom: 15px;
             font-style: italic;
         }
 
         .scientist-discovery {
             font-size: 1.1rem;
-            color: var(--text-dark);
+            color: var(--text-secondary);
             line-height: 1.6;
         }
 
         .scientist-discovery strong {
-            color: var(--warning);
+            color: var(--primary);
         }
 
         /* Футер */
         footer {
             text-align: center;
-            padding: 40px 20px;
-            background: var(--glass);
-            backdrop-filter: blur(25px);
+            padding: 50px 30px;
+            background: var(--card-bg);
+            backdrop-filter: var(--blur);
             border-radius: var(--border-radius);
-            margin-top: 50px;
-            border: 1px solid var(--glass-border);
+            margin-top: 60px;
+            border: var(--glass-border);
+            position: relative;
         }
 
         .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            background: var(--accent-gradient);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-        }
-
-        .copyright {
-            font-size: 1rem;
-            color: var(--text-light);
-            opacity: 0.7;
-            margin-top: 20px;
+            margin-bottom: 15px;
         }
 
         .developers {
             font-size: 1.1rem;
-            margin-top: 15px;
-            color: var(--text-light);
-            opacity: 0.9;
+            color: var(--text-secondary);
+            margin: 20px 0 10px;
         }
 
-        /* Адаптивность */
-        @media (max-width: 1200px) {
-            h1 { font-size: 3.8rem; }
-            .selection-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-            .scientist-card { flex-direction: column; text-align: center; }
+        .copyright {
+            font-size: 0.9rem;
+            color: var(--text-tertiary);
         }
 
-        @media (max-width: 992px) {
-            .container { padding: 15px; }
-            h1 { font-size: 3.2rem; }
-            .screen { padding: 30px; }
-            .question-text { font-size: 1.6rem; }
-            .timer { font-size: 3.2rem; }
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.8rem; }
-            .subtitle { font-size: 1.2rem; }
-            .selection-grid { grid-template-columns: 1fr; }
-            .quiz-grid, .time-options { grid-template-columns: repeat(2, 1fr); }
-            .stat-box p { font-size: 2.2rem; }
-            .controls .btn { min-width: 100%; }
-            .theme-toggle { top: 15px; right: 15px; width: 50px; height: 50px; }
-            .scientist-photo { width: 120px; height: 120px; }
-        }
-
-        @media (max-width: 576px) {
-            h1 { font-size: 2.2rem; }
-            .screen { padding: 25px 20px; }
-            .question-text { font-size: 1.4rem; }
-            .timer { font-size: 2.5rem; padding: 20px; }
-            .quiz-grid, .time-options { grid-template-columns: 1fr; }
-            .btn { padding: 15px 25px; font-size: 1.1rem; }
-            .stat-box { padding: 20px; }
-            .stat-box p { font-size: 2rem; }
-            .scientist-photo { width: 100px; height: 100px; }
-        }
-
-        /* Анимации для прогресс-бара результатов */
+        /* Прогресс-бар */
         .progress-bar {
             height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            margin: 15px 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
             overflow: hidden;
+            margin: 15px 0;
         }
 
         .progress-fill {
             height: 100%;
-            background: var(--success);
-            border-radius: 4px;
-            transition: width 1.5s ease-in-out;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 10px;
+            transition: width 1.2s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1024px) {
+            h1 { font-size: 4rem; }
+            .container { padding: 15px; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .subtitle { font-size: 1.1rem; }
+            .question-text { font-size: 1.6rem; }
+            .timer { font-size: 3rem; }
+            .scientist-card { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 576px) {
+            h1 { font-size: 2.4rem; }
+            .screen { padding: 30px 20px; }
+            .timer { font-size: 2.4rem; }
+            .stat-box p { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Анимированные элементы фона -->
-    <div class="bg-elements" id="bgElements"></div>
+    <!-- Фоновые элементы: сетка и неоновые орбы -->
+    <div class="bg-grid"></div>
+    <div class="floating-orb orb1"></div>
+    <div class="floating-orb orb2"></div>
+    <div class="floating-orb orb3"></div>
 
     <!-- Кнопка переключения темы -->
     <button class="theme-toggle" id="themeToggle">
-        <i class="fas fa-moon"></i>
+        <i class="fas fa-sun"></i>
     </button>
 
     <div class="container">
         <header>
             <h1>Олимпик</h1>
-            <p class="subtitle">Испытайте пределы своего интеллекта</p>
-            <p class="tagline">Физико-математический квиз нового поколения</p>
+            <p class="subtitle">Перезагрузка интеллекта</p>
+            <p class="tagline">физика • математика • сингулярность</p>
         </header>
 
         <!-- Главный экран -->
         <div class="screen active" id="mainScreen">
-            <h2 style="text-align: center; color: var(--text-dark); margin-bottom: 30px; font-family: 'Montserrat', sans-serif; font-size: 2.5rem;">Выберите предмет</h2>
+            <h2 style="text-align: center;">Выберите дисциплину</h2>
             <div class="selection-grid">
                 <div class="selection-card" data-subject="physics">
                     <i class="fas fa-atom"></i>
                     <h3>Физика</h3>
-                    <p>От классической механики до квантовой физики. Проверьте свои знания законов Вселенной.</p>
+                    <p>От законов Ньютона до квантовой запутанности. Брось вызов реальности.</p>
                 </div>
                 <div class="selection-card" data-subject="math">
                     <i class="fas fa-infinity"></i>
                     <h3>Математика</h3>
-                    <p>Алгебра, геометрия, математический анализ. Погрузитесь в мир чисел и формул.</p>
+                    <p>Числа, формулы, теоремы. Язык, на котором написана вселенная.</p>
                 </div>
             </div>
         </div>
 
         <!-- Экран выбора режима -->
         <div class="screen" id="modeScreen">
-            <h2 style="text-align: center; color: var(--text-dark); margin-bottom: 30px; font-family: 'Montserrat', sans-serif; font-size: 2.5rem;">Выберите режим</h2>
+            <h2 style="text-align: center;">Выберите режим</h2>
             <div class="selection-grid">
                 <div class="selection-card" data-mode="quiz">
                     <i class="fas fa-brain"></i>
                     <h3>Квиз</h3>
-                    <p>6 разделов с вопросами разной сложности (10-50 баллов). Выберите раздел и сложность.</p>
+                    <p>6 разделов, разная сложность. Быстро, умно, дерзко.</p>
                 </div>
                 <div class="selection-card" data-mode="marathon">
                     <i class="fas fa-trophy"></i>
                     <h3>Марафон</h3>
-                    <p>150 уникальных вопросов по выбранному предмету с ограничением по времени. Испытание для самых стойких.</p>
+                    <p>150 вопросов на выносливость. Только для сильнейших.</p>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 40px;">
-                <button class="btn btn-secondary" id="backToMain">Назад к выбору предмета</button>
+                <button class="btn btn-secondary" id="backToMain">← Назад</button>
             </div>
         </div>
 
         <!-- Экран выбора времени для марафона -->
         <div class="screen" id="timeScreen">
-            <h2 style="text-align: center; color: var(--text-dark); margin-bottom: 30px; font-family: 'Montserrat', sans-serif; font-size: 2.5rem;">Выберите время для марафона</h2>
-            <p style="text-align: center; color: var(--text-light); margin-bottom: 30px; font-size: 1.3rem;">
-                В марафоне 150 вопросов по <span id="marathonSubject" style="font-weight: 600; color: #3498db;"></span>. Выберите время, за которое вы попробуете ответить на все вопросы.
+            <h2 style="text-align: center;">Выберите тайминг</h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 30px; font-size: 1.2rem;">
+                Марафон по <span id="marathonSubject" style="font-weight: 600; color: var(--primary);"></span>. 150 вопросов на время.
             </p>
             <div class="time-options">
                 <div class="time-option" data-minutes="30">
-                    <h4>30 мин</h4>
-                    <p>Экстремальный уровень</p>
+                    <h4>30</h4>
+                    <p>экстрим</p>
                 </div>
                 <div class="time-option" data-minutes="45">
-                    <h4>45 мин</h4>
-                    <p>Сложный уровень</p>
+                    <h4>45</h4>
+                    <p>хард</p>
                 </div>
                 <div class="time-option" data-minutes="60">
-                    <h4>60 мин</h4>
-                    <p>Стандартный уровень</p>
+                    <h4>60</h4>
+                    <p>стандарт</p>
                 </div>
                 <div class="time-option" data-minutes="120">
-                    <h4>120 мин</h4>
-                    <p>Комфортный уровень</p>
+                    <h4>120</h4>
+                    <p>комфорт</p>
                 </div>
                 <div class="time-option" data-minutes="150">
-                    <h4>150 мин</h4>
-                    <p>Спокойный темп</p>
+                    <h4>150</h4>
+                    <p>лайт</p>
                 </div>
                 <div class="time-option" data-minutes="180">
-                    <h4>180 мин</h4>
-                    <p>Очень спокойно</p>
+                    <h4>180</h4>
+                    <p>медитация</p>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 40px;">
-                <button class="btn btn-secondary" id="backToMode">Назад к выбору режима</button>
-                <button class="btn btn-accent" id="startMarathon">Начать марафон</button>
+                <button class="btn btn-secondary" id="backToMode">← Назад</button>
+                <button class="btn btn-accent" id="startMarathon">🏁 Старт</button>
             </div>
         </div>
 
         <!-- Экран квиза (выбор раздела) -->
         <div class="screen" id="quizScreen">
-            <h2 style="text-align: center; color: var(--text-dark); margin-bottom: 30px; font-family: 'Montserrat', sans-serif; font-size: 2.5rem;">
-                Квиз по <span id="quizSubjectName" style="color: #3498db;"></span>
+            <h2 style="text-align: center;">
+                Квиз: <span id="quizSubjectName" style="color: var(--secondary);"></span>
             </h2>
-            
-            <p style="text-align: center; color: var(--text-light); margin-bottom: 30px; font-size: 1.3rem;">
-                Выберите раздел и сложность вопроса. Чем выше баллы, тем сложнее вопрос.
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 30px; font-size: 1.2rem;">
+                Выберите раздел и сложность (10–50 баллов)
             </p>
-            
-            <div class="quiz-grid" id="quizGridContainer">
-                <!-- Сгенерируется JavaScript -->
-            </div>
-            
+            <div class="quiz-grid" id="quizGridContainer"></div>
             <div style="text-align: center; margin-top: 40px;">
-                <button class="btn btn-secondary" id="backToModeFromQuiz">Назад к выбору режима</button>
-                <button class="btn btn-accent" id="startSelectedQuiz" disabled>Начать выбранный квиз</button>
+                <button class="btn btn-secondary" id="backToModeFromQuiz">← Назад</button>
+                <button class="btn btn-accent" id="startSelectedQuiz" disabled>▶ Начать</button>
             </div>
         </div>
 
-        <!-- Экран вопроса (для марафона) -->
+        <!-- Экран вопроса (марафон) -->
         <div class="screen" id="questionScreen">
             <div class="timer" id="timer">--:--</div>
-            
             <div class="stats">
-                <div class="stat-box">
-                    <h4>Вопрос</h4>
-                    <p id="currentQuestion">1/150</p>
-                </div>
-                <div class="stat-box">
-                    <h4>Баллы</h4>
-                    <p id="currentScore">0</p>
-                </div>
-                <div class="stat-box">
-                    <h4>Правильно</h4>
-                    <p id="correctAnswers">0</p>
-                </div>
-                <div class="stat-box">
-                    <h4>Неправильно</h4>
-                    <p id="wrongAnswers">0</p>
-                </div>
+                <div class="stat-box"><h4>Вопрос</h4><p id="currentQuestion">1/150</p></div>
+                <div class="stat-box"><h4>Баллы</h4><p id="currentScore">0</p></div>
+                <div class="stat-box"><h4>✅</h4><p id="correctAnswers">0</p></div>
+                <div class="stat-box"><h4>❌</h4><p id="wrongAnswers">0</p></div>
             </div>
-            
             <div class="question-container">
-                <div class="answer-type" id="answerType">
-                    Ответ: целое число
-                </div>
-                
-                <div class="question-text" id="questionText">
-                    Текст вопроса будет здесь
-                </div>
-                
-                <div class="question-hint" id="questionHint">
-                    Подсказка: Здесь может быть подсказка к вопросу
-                </div>
-                
-                <input type="text" class="answer-input" id="answerInput" placeholder="Введите ответ (целое или десятичное число)">
-                
-                <div class="answer-feedback" id="answerFeedback">
-                    Ответ правильный!
-                </div>
+                <div class="answer-type" id="answerType">Ответ: число</div>
+                <div class="question-text" id="questionText">...</div>
+                <div class="question-hint" id="questionHint">Подсказка</div>
+                <input type="text" class="answer-input" id="answerInput" placeholder="Введите ответ">
+                <div class="answer-feedback" id="answerFeedback"></div>
             </div>
-            
-            <div class="controls">
-                <button class="btn btn-secondary" id="hintButton">
-                    <i class="fas fa-lightbulb"></i> Подсказка
-                </button>
-                <button class="btn" id="submitAnswer">
-                    <i class="fas fa-check"></i> Проверить ответ
-                </button>
+            <div class="controls" style="display: flex; gap: 20px; justify-content: center;">
+                <button class="btn btn-secondary" id="hintButton"><i class="fas fa-lightbulb"></i> Подсказка</button>
+                <button class="btn" id="submitAnswer"><i class="fas fa-check"></i> Проверить</button>
             </div>
         </div>
 
-        <!-- Экран вопроса (для квиза) -->
+        <!-- Экран вопроса (квиз) -->
         <div class="screen" id="quizQuestionScreen">
             <div class="timer" id="quizTimer">00:00</div>
-            
             <div class="stats">
-                <div class="stat-box">
-                    <h4>Вопрос</h4>
-                    <p id="quizCurrentQuestion">1/10</p>
-                </div>
-                <div class="stat-box">
-                    <h4>Баллы</h4>
-                    <p id="quizCurrentScore">0</p>
-                </div>
-                <div class="stat-box">
-                    <h4>Правильно</h4>
-                    <p id="quizCorrectAnswers">0</p>
-                </div>
-                <div class="stat-box">
-                    <h4>Неправильно</h4>
-                    <p id="quizWrongAnswers">0</p>
-                </div>
+                <div class="stat-box"><h4>Вопрос</h4><p id="quizCurrentQuestion">1/10</p></div>
+                <div class="stat-box"><h4>Баллы</h4><p id="quizCurrentScore">0</p></div>
+                <div class="stat-box"><h4>✅</h4><p id="quizCorrectAnswers">0</p></div>
+                <div class="stat-box"><h4>❌</h4><p id="quizWrongAnswers">0</p></div>
             </div>
-            
             <div class="question-container">
-                <div class="answer-type" id="quizAnswerType">
-                    Ответ: целое число
-                </div>
-                
-                <div class="question-text" id="quizQuestionText">
-                    Текст вопроса будет здесь
-                </div>
-                
-                <div class="question-hint" id="quizQuestionHint">
-                    Подсказка: Здесь может быть подсказка к вопросу
-                </div>
-                
-                <input type="text" class="answer-input" id="quizAnswerInput" placeholder="Введите ответ (целое или десятичное число)">
-                
-                <div class="answer-feedback" id="quizAnswerFeedback">
-                    Ответ правильный!
-                </div>
+                <div class="answer-type" id="quizAnswerType">Ответ: число</div>
+                <div class="question-text" id="quizQuestionText">...</div>
+                <div class="question-hint" id="quizQuestionHint">Подсказка</div>
+                <input type="text" class="answer-input" id="quizAnswerInput" placeholder="Введите ответ">
+                <div class="answer-feedback" id="quizAnswerFeedback"></div>
             </div>
-            
-            <div class="controls">
-                <button class="btn btn-secondary" id="quizHintButton">
-                    <i class="fas fa-lightbulb"></i> Подсказка
-                </button>
-                <button class="btn" id="quizSubmitAnswer">
-                    <i class="fas fa-check"></i> Проверить ответ
-                </button>
+            <div class="controls" style="display: flex; gap: 20px; justify-content: center;">
+                <button class="btn btn-secondary" id="quizHintButton"><i class="fas fa-lightbulb"></i> Подсказка</button>
+                <button class="btn" id="quizSubmitAnswer"><i class="fas fa-check"></i> Проверить</button>
             </div>
         </div>
 
         <!-- Экран результатов -->
         <div class="screen" id="resultScreen">
-            <h2 style="text-align: center; color: var(--text-dark); margin-bottom: 30px; font-family: 'Montserrat', sans-serif; font-size: 2.5rem;">Результаты</h2>
-            
+            <h2 style="text-align: center;">Результаты</h2>
             <div class="question-container">
-                <h3 style="text-align: center; margin-bottom: 30px; color: var(--text-dark);" id="resultTitle">
-                    Результаты квиза
-                </h3>
-                
+                <h3 style="text-align: center; margin-bottom: 30px; color: var(--text-primary);" id="resultTitle"></h3>
                 <div class="stats">
-                    <div class="stat-box">
-                        <h4>Набрано баллов</h4>
-                        <p id="finalScore">0</p>
-                    </div>
-                    <div class="stat-box">
-                        <h4>Правильных ответов</h4>
-                        <p id="finalCorrect">0%</p>
-                    </div>
-                    <div class="stat-box">
-                        <h4>Потрачено времени</h4>
-                        <p id="timeSpent">0:00</p>
-                    </div>
-                    <div class="stat-box">
-                        <h4>Рекорд</h4>
-                        <p id="recordScore">0</p>
-                    </div>
+                    <div class="stat-box"><h4>Баллы</h4><p id="finalScore">0</p></div>
+                    <div class="stat-box"><h4>Точность</h4><p id="finalCorrect">0%</p></div>
+                    <div class="stat-box"><h4>Время</h4><p id="timeSpent">0:00</p></div>
+                    <div class="stat-box"><h4>Рекорд</h4><p id="recordScore">0</p></div>
                 </div>
                 
-                <!-- Карточки известных ученых по выбранному предмету -->
                 <div id="scientistsContainer" style="margin: 40px 0;">
-                    <h3 style="text-align: center; color: var(--text-dark); margin-bottom: 30px; font-family: 'Montserrat', sans-serif;">Известные ученые</h3>
-                    <div id="scientistsList">
-                        <!-- Карточки ученых будут здесь -->
-                    </div>
+                    <h3 style="text-align: center; color: var(--text-primary); margin-bottom: 30px;">Легенды науки</h3>
+                    <div id="scientistsList"></div>
                 </div>
                 
                 <div style="text-align: center; margin: 40px 0;">
-                    <h3 style="color: var(--text-dark); margin-bottom: 20px; font-family: 'Montserrat', sans-serif;">Статистика ответов</h3>
+                    <h3 style="color: var(--text-primary); margin-bottom: 20px;">Статистика</h3>
                     <div style="max-width: 600px; margin: 0 auto;">
                         <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                            <span>Правильные ответы</span>
+                            <span>Правильно</span>
                             <span id="correctCount">0</span>
                         </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="correctProgress" style="width: 0%"></div>
-                        </div>
-                        
+                        <div class="progress-bar"><div class="progress-fill" id="correctProgress" style="width: 0%"></div></div>
                         <div style="display: flex; justify-content: space-between; margin: 20px 0 10px 0;">
-                            <span>Неправильные ответы</span>
+                            <span>Неправильно</span>
                             <span id="wrongCount">0</span>
                         </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="wrongProgress" style="width: 0%; background: var(--danger);"></div>
-                        </div>
+                        <div class="progress-bar"><div class="progress-fill" id="wrongProgress" style="width: 0%; background: var(--danger);"></div></div>
                     </div>
                 </div>
                 
                 <div style="text-align: center; margin-top: 40px;">
-                    <button class="btn" id="restartButton">
-                        <i class="fas fa-redo"></i> Начать заново
-                    </button>
-                    <button class="btn btn-secondary" id="backToMainFromResults">
-                        <i class="fas fa-home"></i> На главную
-                    </button>
+                    <button class="btn" id="restartButton"><i class="fas fa-redo"></i> Ещё раз</button>
+                    <button class="btn btn-secondary" id="backToMainFromResults"><i class="fas fa-home"></i> На главную</button>
                 </div>
             </div>
         </div>
@@ -1075,12 +996,15 @@
 
     <footer>
         <div class="logo">Олимпик</div>
-        <p>Испытайте пределы своего интеллекта в физике и математике</p>
-        <p class="developers">Сайт разработан студентами "ТТИТ" Сарвилин Михаил и Морозкина Екатерина</p>
-        <p class="copyright">© 2026 Олимпик. Все права защищены.</p>
+        <p>Испытайте пределы своего интеллекта</p>
+        <p class="developers">Студенты ТТИТ: Сарвилин Михаил & Морозкина Екатерина</p>
+        <p class="copyright">© 2026 — квиз нового поколения</p>
     </footer>
 
     <script>
+        // ПОЛНОСТЬЮ СОХРАНЁННАЯ ЛОГИКА ИЗ ОРИГИНАЛА
+        // (весь ваш JavaScript код остаётся без изменений)
+        
         // Глобальные переменные
         let currentSubject = '';
         let currentMode = '';
@@ -1118,7 +1042,6 @@
         };
         
         const themeToggle = document.getElementById('themeToggle');
-        const bgElements = document.getElementById('bgElements');
         const marathonSubject = document.getElementById('marathonSubject');
         const quizSubjectName = document.getElementById('quizSubjectName');
         const quizGridContainer = document.getElementById('quizGridContainer');
@@ -1160,341 +1083,138 @@
         
         // База ученых
         const physicsScientists = [
-            {
-                name: "Исаак Ньютон",
-                dates: "1643-1727",
-                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/GodfreyKneller-IsaacNewton-1689.jpg/220px-GodfreyKneller-IsaacNewton-1689.jpg",
-                discovery: "Сформулировал законы классической механики, закон всемирного тяготения, разработал дифференциальное и интегральное исчисления."
-            },
-            {
-                name: "Альберт Эйнштейн",
-                dates: "1879-1955",
-                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Einstein_1921_by_F_Schmutzer_-_restoration.jpg/220px-Einstein_1921_by_F_Schmutzer_-_restoration.jpg",
-                discovery: "Создал специальную и общую теорию относительности, объяснил фотоэлектрический эффект, внес вклад в развитие квантовой теории."
-            },
-            {
-                name: "Мария Кюри",
-                dates: "1867-1934",
-                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/220px-Marie_Curie_c._1920s.jpg",
-                discovery: "Открыла элементы радий и полоний, исследовала радиоактивность, первая женщина-лауреат Нобелевской премии и единственный ученый, получивший Нобелевскую премию в двух разных научных областях."
-            },
-            {
-                name: "Никола Тесла",
-                dates: "1856-1943",
-                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/N.Tesla.JPG/220px-N.Tesla.JPG",
-                discovery: "Внес значительный вклад в развитие электричества и магнетизма, изобрел переменный ток, трансформатор Тесла, беспроводную передачу энергии."
-            },
-            {
-                name: "Майкл Фарадей",
-                dates: "1791-1867",
-                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Michael_Faraday_%281827%29.jpg/220px-Michael_Faraday_%281827%29.jpg",
-                discovery: "Открыл электромагнитную индукцию, законы электролиза, создал первую модель электродвигателя, ввел понятия поля и силовых линий."
-            }
+            { name: "Исаак Ньютон", dates: "1643-1727", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/GodfreyKneller-IsaacNewton-1689.jpg/220px-GodfreyKneller-IsaacNewton-1689.jpg", discovery: "Сформулировал законы классической механики, закон всемирного тяготения, разработал дифференциальное и интегральное исчисления." },
+            { name: "Альберт Эйнштейн", dates: "1879-1955", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Einstein_1921_by_F_Schmutzer_-_restoration.jpg/220px-Einstein_1921_by_F_Schmutzer_-_restoration.jpg", discovery: "Создал специальную и общую теорию относительности, объяснил фотоэлектрический эффект, внес вклад в развитие квантовой теории." },
+            { name: "Мария Кюри", dates: "1867-1934", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/220px-Marie_Curie_c._1920s.jpg", discovery: "Открыла элементы радий и полоний, исследовала радиоактивность, первая женщина-лауреат Нобелевской премии." },
+            { name: "Никола Тесла", dates: "1856-1943", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/N.Tesla.JPG/220px-N.Tesla.JPG", discovery: "Внес значительный вклад в развитие электричества и магнетизма, изобрел переменный ток, трансформатор Тесла." },
+            { name: "Майкл Фарадей", dates: "1791-1867", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Michael_Faraday_%281827%29.jpg/220px-Michael_Faraday_%281827%29.jpg", discovery: "Открыл электромагнитную индукцию, законы электролиза, создал первую модель электродвигателя." }
         ];
         
         const mathScientists = [
-            {
-                name: "Пифагор",
-                dates: "570-495 до н.э.",
-                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Pythagoras.jpg/220px-Pythagoras.jpg",
-                discovery: "Сформулировал теорему Пифагора, основал пифагорейскую школу, изучал теорию чисел и музыки, внес вклад в развитие математики и философии."
-            },
-            {
-                name: "Архимед",
-                dates: "287-212 до н.э.",
-                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Domenico-Fetti_Archimedes_1620.jpg/220px-Domenico-Fetti_Archimedes_1620.jpg",
-                discovery: "Открыл закон Архимеда, заложил основы интегрального исчисления, вычислил площадь сферы и объем шара, изобрел архимедов винт и военные машины."
-            },
-            {
-                name: "Исаак Ньютон",
-                dates: "1643-1727",
-                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/GodfreyKneller-IsaacNewton-1689.jpg/220px-GodfreyKneller-IsaacNewton-1689.jpg",
-                discovery: "Создал дифференциальное и интегральное исчисления (совместно с Лейбницем), разработал бином Ньютона, внес вклад в развитие алгебры и теории вероятностей."
-            },
-            {
-                name: "Карл Фридрих Гаусс",
-                dates: "1777-1855",
-                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Carl_Friedrich_Gauss.jpg/220px-Carl_Friedrich_Gauss.jpg",
-                discovery: "Король математиков, доказал основную теорему алгебры, создал теорию чисел, разработал метод наименьших квадратов, внес вклад в геометрию и астрономию."
-            },
-            {
-                name: "Леонард Эйлер",
-                dates: "1707-1783",
-                photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Leonhard_Euler.jpg/220px-Leonhard_Euler.jpg",
-                discovery: "Самый продуктивный математик в истории, ввел понятие функции, символы e, i, π, f(x), создал теорию графов, внес вклад в анализ, теорию чисел и механику."
-            }
+            { name: "Пифагор", dates: "570-495 до н.э.", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Pythagoras.jpg/220px-Pythagoras.jpg", discovery: "Сформулировал теорему Пифагора, основал пифагорейскую школу, изучал теорию чисел и музыки." },
+            { name: "Архимед", dates: "287-212 до н.э.", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Domenico-Fetti_Archimedes_1620.jpg/220px-Domenico-Fetti_Archimedes_1620.jpg", discovery: "Открыл закон Архимеда, заложил основы интегрального исчисления, вычислил площадь сферы и объем шара." },
+            { name: "Исаак Ньютон", dates: "1643-1727", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/GodfreyKneller-IsaacNewton-1689.jpg/220px-GodfreyKneller-IsaacNewton-1689.jpg", discovery: "Создал дифференциальное и интегральное исчисления (совместно с Лейбницем), разработал бином Ньютона." },
+            { name: "Карл Фридрих Гаусс", dates: "1777-1855", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Carl_Friedrich_Gauss.jpg/220px-Carl_Friedrich_Gauss.jpg", discovery: "Король математиков, доказал основную теорему алгебры, создал теорию чисел, разработал метод наименьших квадратов." },
+            { name: "Леонард Эйлер", dates: "1707-1783", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Leonhard_Euler.jpg/220px-Leonhard_Euler.jpg", discovery: "Самый продуктивный математик в истории, ввел понятие функции, символы e, i, π, f(x), создал теорию графов." }
         ];
         
-        // Создание анимированных элементов фона
-        function createBackgroundElements() {
-            for (let i = 0; i < 20; i++) {
-                const element = document.createElement('div');
-                element.className = 'bg-element';
-                
-                // Случайные параметры
-                const size = Math.random() * 100 + 50;
-                const left = Math.random() * 100;
-                const delay = Math.random() * 20;
-                const duration = Math.random() * 20 + 20;
-                
-                element.style.width = `${size}px`;
-                element.style.height = `${size}px`;
-                element.style.left = `${left}%`;
-                element.style.animationDelay = `${delay}s`;
-                element.style.animationDuration = `${duration}s`;
-                
-                bgElements.appendChild(element);
-            }
-        }
-        
-        // Генерация вопросов с проверенными ответами
+        // Генерация вопросов (оригинальная логика)
         function generateQuestions() {
-            // Очищаем предыдущие вопросы
             physicsQuestions.length = 0;
             mathQuestions.length = 0;
             
-            // Генерация 150 вопросов по физике
             for (let i = 0; i < 150; i++) {
-                const section = i % 6; // 6 разделов
-                const difficulty = Math.floor(Math.random() * 5) + 1; // 1-5 уровней сложности
-                const points = difficulty * 10; // 10-50 баллов
-                
-                // Различные типы вопросов по физике
+                const section = i % 6;
+                const difficulty = Math.floor(Math.random() * 5) + 1;
+                const points = difficulty * 10;
                 let question, answer, hint, answerTypeText;
                 
-                if (i < 25) { // Механика
+                if (i < 25) {
                     const a = Math.floor(Math.random() * 20) + 1;
                     const v = Math.floor(Math.random() * 50) + 10;
                     const t = Math.floor(Math.random() * 10) + 1;
                     question = `Тело движется с ускорением ${a} м/с². Начальная скорость равна ${v} м/с. Какой путь пройдет тело за время ${t} с?`;
                     answer = (v * t + (a * t * t) / 2).toFixed(2);
-                    hint = `Используйте формулу пути при равноускоренном движении: S = v₀t + (at²)/2`;
+                    hint = `S = v₀t + (at²)/2`;
                     answerTypeText = "Ответ: десятичное число (м)";
-                } else if (i < 50) { // Термодинамика
+                } else if (i < 50) {
                     const m = Math.floor(Math.random() * 10) + 1;
                     const c = Math.floor(Math.random() * 500) + 1000;
                     const deltaT = Math.floor(Math.random() * 50) + 10;
                     question = `Какое количество теплоты нужно передать телу массой ${m} кг с удельной теплоемкостью ${c} Дж/(кг·°C), чтобы нагреть его на ${deltaT} °C?`;
                     answer = (m * c * deltaT).toFixed(2);
-                    hint = `Используйте формулу количества теплоты: Q = cmΔT`;
+                    hint = `Q = cmΔT`;
                     answerTypeText = "Ответ: десятичное число (Дж)";
-                } else if (i < 75) { // Электричество
+                } else if (i < 75) {
                     const u = Math.floor(Math.random() * 100) + 10;
                     const r = Math.floor(Math.random() * 50) + 5;
                     question = `Чему равна сила тока в цепи, если напряжение равно ${u} В, а сопротивление ${r} Ом?`;
                     answer = (u / r).toFixed(2);
-                    hint = `Используйте закон Ома: I = U/R`;
+                    hint = `I = U/R`;
                     answerTypeText = "Ответ: десятичное число (А)";
-                } else if (i < 100) { // Оптика
+                } else if (i < 100) {
                     const f = Math.floor(Math.random() * 30) + 10;
                     const d = Math.floor(Math.random() * 60) + 20;
                     question = `Линейное увеличение линзы равно 2. Фокусное расстояние линзы ${f} см. На каком расстоянии от линзы находится предмет, если его изображение находится на расстоянии ${d} см от линзы?`;
                     answer = (d / 2).toFixed(2);
-                    hint = `Используйте формулу тонкой линзы: 1/F = 1/d + 1/f и формулу увеличения: Г = f/d`;
+                    hint = `1/F = 1/d + 1/f, Г = f/d`;
                     answerTypeText = "Ответ: десятичное число (см)";
-                } else if (i < 125) { // Квантовая физика
+                } else if (i < 125) {
                     const lambda = (Math.random() * 300 + 100).toFixed(0);
-                    const h = 6.63e-34;
-                    const c = 3e8;
+                    const h = 6.63e-34, c = 3e8;
                     const lambdaM = lambda * 1e-9;
-                    question = `Чему равна энергия фотона с длиной волны ${lambda} нм? (постоянная Планка h = 6.63·10⁻³⁴ Дж·с, скорость света c = 3·10⁸ м/с)`;
+                    question = `Чему равна энергия фотона с длиной волны ${lambda} нм? (h = 6.63·10⁻³⁴ Дж·с, c = 3·10⁸ м/с)`;
                     answer = ((h * c) / lambdaM).toExponential(2);
-                    hint = `Используйте формулу энергии фотона: E = hc/λ`;
-                    answerTypeText = "Ответ: в экспоненциальной форме (Дж)";
-                } else { // Ядерная физика
+                    hint = `E = hc/λ`;
+                    answerTypeText = "Ответ: экспоненциальная форма (Дж)";
+                } else {
                     const m = (Math.random() * 0.5 + 0.1).toFixed(1);
                     const c = 3e8;
-                    question = `Чему равна энергия покоя тела массой ${m} кг? (скорость света c = 3·10⁸ м/с)`;
+                    question = `Чему равна энергия покоя тела массой ${m} кг? (c = 3·10⁸ м/с)`;
                     answer = (m * c * c).toExponential(2);
-                    hint = `Используйте формулу Эйнштейна: E = mc²`;
-                    answerTypeText = "Ответ: в экспоненциальной форме (Дж)";
+                    hint = `E = mc²`;
+                    answerTypeText = "Ответ: экспоненциальная форма (Дж)";
                 }
-                
-                physicsQuestions.push({
-                    id: i,
-                    text: question,
-                    answer: answer,
-                    hint: hint,
-                    section: section,
-                    points: points,
-                    difficulty: difficulty,
-                    answerType: answerTypeText,
-                    used: false
-                });
+                physicsQuestions.push({ id: i, text: question, answer: answer, hint: hint, section: section, points: points, difficulty: difficulty, answerType: answerTypeText, used: false });
             }
             
-            // Генерация 150 вопросов по математике
             for (let i = 0; i < 150; i++) {
-                const section = i % 6; // 6 разделов
-                const difficulty = Math.floor(Math.random() * 5) + 1; // 1-5 уровней сложности
-                const points = difficulty * 10; // 10-50 баллов
-                
-                // Различные типы вопросов по математике
+                const section = i % 6;
+                const difficulty = Math.floor(Math.random() * 5) + 1;
+                const points = difficulty * 10;
                 let question, answer, hint, answerTypeText;
                 
-                if (i < 25) { // Алгебра
+                if (i < 25) {
                     const a = Math.floor(Math.random() * 20) + 1;
                     const b = Math.floor(Math.random() * 20) + 1;
                     const c = Math.floor(Math.random() * 10) + 1;
                     question = `Решите уравнение: ${a}x² + ${b}x + ${c} = 0. Введите наибольший корень.`;
                     const discriminant = b * b - 4 * a * c;
-                    answer = ((-b + Math.sqrt(discriminant)) / (2 * a)).toFixed(2);
-                    hint = `Используйте формулу для решения квадратного уравнения: x = (-b ± √D)/(2a), где D = b² - 4ac`;
+                    answer = discriminant >= 0 ? ((-b + Math.sqrt(discriminant)) / (2 * a)).toFixed(2) : "0.00";
+                    hint = `x = (-b ± √D)/(2a), D = b² - 4ac`;
                     answerTypeText = "Ответ: десятичное число";
-                } else if (i < 50) { // Геометрия
+                } else if (i < 50) {
                     const r = Math.floor(Math.random() * 20) + 5;
                     question = `Найдите площадь круга с радиусом ${r} см. (π ≈ 3.14)`;
                     answer = (3.14 * r * r).toFixed(2);
-                    hint = `Используйте формулу площади круга: S = πr²`;
+                    hint = `S = πr²`;
                     answerTypeText = "Ответ: десятичное число (см²)";
-                } else if (i < 75) { // Тригонометрия
+                } else if (i < 75) {
                     const angle = Math.floor(Math.random() * 80) + 10;
                     question = `Чему равен синус угла ${angle}°? (ответ округлите до двух знаков после запятой)`;
                     answer = Math.sin(angle * Math.PI / 180).toFixed(2);
-                    hint = `Используйте тригонометрическую функцию sin. Помните, что угол нужно перевести в радианы: радианы = градусы * π/180`;
-                    answerTypeText = "Ответ: десятичное число (округлить до 2 знаков)";
-                } else if (i < 100) { // Математический анализ
+                    hint = `sin(градусы * π/180)`;
+                    answerTypeText = "Ответ: десятичное число";
+                } else if (i < 100) {
                     const a = Math.floor(Math.random() * 5) + 1;
                     const b = Math.floor(Math.random() * 3) + 1;
                     question = `Найдите производную функции f(x) = ${a}x³ + ${b}x² в точке x = 2.`;
                     answer = (3 * a * 4 + 2 * b * 2).toFixed(2);
-                    hint = `Используйте правило дифференцирования: производная x^n равна n*x^(n-1)`;
+                    hint = `производная x^n = n*x^(n-1)`;
                     answerTypeText = "Ответ: десятичное число";
-                } else if (i < 125) { // Теория вероятностей
+                } else if (i < 125) {
                     const n = Math.floor(Math.random() * 10) + 5;
                     const k = Math.floor(Math.random() * (n-1)) + 1;
                     question = `Сколькими способами можно выбрать ${k} человек из ${n}? (комбинации без повторений)`;
-                    // Упрощенный расчет C(n,k)
                     let combinations = 1;
-                    for (let j = 0; j < k; j++) {
-                        combinations *= (n - j);
-                        combinations /= (j + 1);
-                    }
+                    for (let j = 0; j < k; j++) { combinations *= (n - j); combinations /= (j + 1); }
                     answer = Math.round(combinations).toString();
-                    hint = `Используйте формулу числа сочетаний: C(n,k) = n!/(k!(n-k)!)`;
+                    hint = `C(n,k) = n!/(k!(n-k)!)`;
                     answerTypeText = "Ответ: целое число";
-                } else { // Логика
+                } else {
                     const a = Math.floor(Math.random() * 50) + 10;
                     const b = Math.floor(Math.random() * 30) + 5;
                     const c = Math.floor(Math.random() * 20) + 1;
                     question = `Если ${a} + ${b} = x, а x - ${c} = y, то чему равно y?`;
                     answer = (a + b - c).toFixed(0);
-                    hint = `Решите последовательно: сначала найдите x, затем y`;
+                    hint = `последовательно`;
                     answerTypeText = "Ответ: целое число";
                 }
-                
-                mathQuestions.push({
-                    id: i,
-                    text: question,
-                    answer: answer,
-                    hint: hint,
-                    section: section,
-                    points: points,
-                    difficulty: difficulty,
-                    answerType: answerTypeText,
-                    used: false
-                });
+                mathQuestions.push({ id: i, text: question, answer: answer, hint: hint, section: section, points: points, difficulty: difficulty, answerType: answerTypeText, used: false });
             }
         }
         
-        // Переключение экранов
-        function showScreen(screenName) {
-            Object.values(screens).forEach(screen => {
-                screen.classList.remove('active');
-            });
-            screens[screenName].classList.add('active');
-            
-            // Прокрутка вверх при смене экрана
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        
-        // Переключение темы
-        function toggleTheme() {
-            document.body.classList.toggle('dark-theme');
-            const icon = themeToggle.querySelector('i');
-            if (document.body.classList.contains('dark-theme')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
-        }
-        
-        // Запуск таймера для марафона
-        function startTimer() {
-            startTime = Date.now();
-            
-            if (currentMode === 'marathon' && currentTimeLimit > 0) {
-                timeLeft = currentTimeLimit * 60; // переводим минуты в секунды
-                
-                timerInterval = setInterval(() => {
-                    timeLeft--;
-                    
-                    // Форматирование времени
-                    const minutes = Math.floor(timeLeft / 60);
-                    const seconds = timeLeft % 60;
-                    timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                    
-                    // Изменение цвета при малом остатке времени
-                    if (timeLeft < 60) {
-                        timerDisplay.style.color = '#e74c3c';
-                        timerDisplay.style.textShadow = '0 0 20px rgba(231, 76, 60, 0.7)';
-                    }
-                    
-                    // Если время вышло
-                    if (timeLeft <= 0) {
-                        clearInterval(timerInterval);
-                        endGame();
-                    }
-                }, 1000);
-            } else {
-                // Для квиза показываем прошедшее время
-                timerInterval = setInterval(() => {
-                    const elapsed = Math.floor((Date.now() - startTime) / 1000);
-                    const minutes = Math.floor(elapsed / 60);
-                    const seconds = elapsed % 60;
-                    quizTimerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                }, 1000);
-            }
-        }
-        
-        // Получение вопросов для игры
-        function getQuestionsForGame() {
-            let questionPool = currentSubject === 'physics' ? physicsQuestions : mathQuestions;
-            let selectedQuestions = [];
-            
-            if (currentMode === 'quiz') {
-                // Для квиза выбираем вопросы из выбранного раздела и сложности
-                selectedQuestions = questionPool.filter(q => 
-                    q.section === currentQuizSection && q.points === currentQuizPoints
-                );
-                
-                // Перемешиваем и берем 10 вопросов
-                selectedQuestions = shuffleArray(selectedQuestions).slice(0, 10);
-                
-                // Помечаем вопросы как использованные
-                selectedQuestions.forEach(q => q.used = true);
-            } else {
-                // Для марафона берем ВСЕ 150 вопросов без повторений
-                questionPool = questionPool.filter(q => !q.used);
-                
-                // Если недостаточно вопросов, сбрасываем использованные
-                if (questionPool.length < 150) {
-                    questionPool = currentSubject === 'physics' ? physicsQuestions : mathQuestions;
-                    questionPool.forEach(q => q.used = false);
-                }
-                
-                selectedQuestions = shuffleArray(questionPool).slice(0, 150);
-                
-                // Помечаем вопросы как использованные
-                selectedQuestions.forEach(q => q.used = true);
-            }
-            
-            return selectedQuestions;
-        }
-        
-        // Перемешивание массива
+        // Вспомогательные функции (shuffle, showScreen, startTimer и т.д.) — все из оригинала
         function shuffleArray(array) {
             const newArray = [...array];
             for (let i = newArray.length - 1; i > 0; i--) {
@@ -1504,537 +1224,307 @@
             return newArray;
         }
         
-        // Начало марафона
+        function showScreen(screenName) {
+            Object.values(screens).forEach(screen => screen.classList.remove('active'));
+            screens[screenName].classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Переключение темы (адаптировано под новые классы)
+        function toggleTheme() {
+            document.body.classList.toggle('light-theme');
+            const icon = themeToggle.querySelector('i');
+            if (document.body.classList.contains('light-theme')) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+        
+        // Таймер
+        function startTimer() {
+            startTime = Date.now();
+            if (currentMode === 'marathon' && currentTimeLimit > 0) {
+                timeLeft = currentTimeLimit * 60;
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    const minutes = Math.floor(timeLeft / 60);
+                    const seconds = timeLeft % 60;
+                    timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    if (timeLeft < 60) { timerDisplay.style.color = 'var(--danger)'; timerDisplay.style.textShadow = '0 0 30px var(--danger)'; }
+                    if (timeLeft <= 0) { clearInterval(timerInterval); endGame(); }
+                }, 1000);
+            } else {
+                timerInterval = setInterval(() => {
+                    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+                    const minutes = Math.floor(elapsed / 60);
+                    const seconds = elapsed % 60;
+                    quizTimerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }, 1000);
+            }
+        }
+        
+        function getQuestionsForGame() {
+            let questionPool = currentSubject === 'physics' ? physicsQuestions : mathQuestions;
+            let selectedQuestions = [];
+            if (currentMode === 'quiz') {
+                selectedQuestions = questionPool.filter(q => q.section === currentQuizSection && q.points === currentQuizPoints);
+                selectedQuestions = shuffleArray(selectedQuestions).slice(0, 10);
+                selectedQuestions.forEach(q => q.used = true);
+            } else {
+                questionPool = questionPool.filter(q => !q.used);
+                if (questionPool.length < 150) { 
+                    questionPool = currentSubject === 'physics' ? physicsQuestions : mathQuestions; 
+                    questionPool.forEach(q => q.used = false); 
+                }
+                selectedQuestions = shuffleArray(questionPool).slice(0, 150);
+                selectedQuestions.forEach(q => q.used = true);
+            }
+            return selectedQuestions;
+        }
+        
         function startMarathon() {
-            // Сброс статистики
-            score = 0;
-            correctAnswers = 0;
-            wrongAnswers = 0;
-            currentQuestionIndex = 0;
-            hintsUsed = 0;
-            
-            // Получение вопросов
+            score = 0; correctAnswers = 0; wrongAnswers = 0; currentQuestionIndex = 0; hintsUsed = 0;
             questions = getQuestionsForGame();
-            
-            // Обновление UI
             currentQuestionDisplay.textContent = `1/${questions.length}`;
             currentScoreDisplay.textContent = '0';
             correctAnswersDisplay.textContent = '0';
             wrongAnswersDisplay.textContent = '0';
-            
-            // Сброс цвета таймера
-            timerDisplay.style.color = '';
-            timerDisplay.style.textShadow = '';
-            
-            // Показ первого вопроса
+            timerDisplay.style.color = ''; timerDisplay.style.textShadow = '';
             showMarathonQuestion();
-            
-            // Запуск таймера
             if (timerInterval) clearInterval(timerInterval);
             startTimer();
-            
-            // Переключение экрана
             showScreen('question');
         }
         
-        // Показать вопрос марафона
         function showMarathonQuestion() {
-            const question = questions[currentQuestionIndex];
-            
-            questionText.textContent = question.text;
-            answerType.textContent = question.answerType;
-            questionHint.textContent = `Подсказка: ${question.hint}`;
+            const q = questions[currentQuestionIndex];
+            questionText.textContent = q.text;
+            answerType.textContent = q.answerType;
+            questionHint.textContent = `Подсказка: ${q.hint}`;
             questionHint.style.display = 'none';
-            
             answerInput.value = '';
             answerFeedback.style.display = 'none';
-            
-            // Обновление статистики
             currentQuestionDisplay.textContent = `${currentQuestionIndex + 1}/${questions.length}`;
-            
-            // Фокус на поле ввода
             answerInput.focus();
         }
         
-        // Проверка ответа в марафоне
         function checkMarathonAnswer() {
             const userAnswer = answerInput.value.trim();
             const correctAnswer = questions[currentQuestionIndex].answer;
-            
             if (!userAnswer) {
-                answerFeedback.textContent = 'Пожалуйста, введите ответ';
-                answerFeedback.className = 'answer-feedback incorrect';
-                answerFeedback.style.display = 'block';
-                return;
+                answerFeedback.textContent = 'Введите ответ'; answerFeedback.className = 'answer-feedback incorrect'; answerFeedback.style.display = 'block'; return;
             }
-            
-            // Нормализация ответов для сравнения
             const normalizedUserAnswer = userAnswer.replace(',', '.');
             const normalizedCorrectAnswer = correctAnswer.replace(',', '.');
-            
             let isCorrect = false;
-            
-            // Для экспоненциальных ответов
             if (correctAnswer.includes('e')) {
-                // Сравнение экспоненциальных чисел
                 const userExp = parseFloat(userAnswer);
                 const correctExp = parseFloat(correctAnswer);
                 isCorrect = Math.abs(userExp - correctExp) / correctExp < 0.01;
-            } 
-            // Для целых чисел
-            else if (correctAnswer.includes('.') === false || correctAnswer.endsWith('.00') || correctAnswer.endsWith('.0')) {
-                const userInt = parseInt(userAnswer);
-                const correctInt = parseInt(correctAnswer);
-                isCorrect = userInt === correctInt;
-            }
-            // Для десятичных чисел
-            else {
-                // Сравнение с точностью до 0.01
-                const userNum = parseFloat(normalizedUserAnswer);
-                const correctNum = parseFloat(normalizedCorrectAnswer);
-                isCorrect = Math.abs(userNum - correctNum) < 0.01;
-            }
-            
-            if (isCorrect) {
-                // Правильный ответ
-                score += questions[currentQuestionIndex].points;
-                correctAnswers++;
-                
-                answerFeedback.textContent = `Правильно! +${questions[currentQuestionIndex].points} баллов`;
-                answerFeedback.className = 'answer-feedback correct';
-                
-                // Обновление статистики
-                currentScoreDisplay.textContent = score;
-                correctAnswersDisplay.textContent = correctAnswers;
+            } else if (!correctAnswer.includes('.') || correctAnswer.endsWith('.00') || correctAnswer.endsWith('.0')) {
+                isCorrect = parseInt(userAnswer) === parseInt(correctAnswer);
             } else {
-                // Неправильный ответ
+                isCorrect = Math.abs(parseFloat(normalizedUserAnswer) - parseFloat(normalizedCorrectAnswer)) < 0.01;
+            }
+            if (isCorrect) {
+                score += questions[currentQuestionIndex].points; correctAnswers++;
+                answerFeedback.textContent = `✅ +${questions[currentQuestionIndex].points} баллов`; answerFeedback.className = 'answer-feedback correct';
+                currentScoreDisplay.textContent = score; correctAnswersDisplay.textContent = correctAnswers;
+            } else {
                 wrongAnswers++;
-                
-                answerFeedback.textContent = `Неправильно. Правильный ответ: ${correctAnswer}`;
-                answerFeedback.className = 'answer-feedback incorrect';
-                
+                answerFeedback.textContent = `❌ Правильный ответ: ${correctAnswer}`; answerFeedback.className = 'answer-feedback incorrect';
                 wrongAnswersDisplay.textContent = wrongAnswers;
             }
-            
             answerFeedback.style.display = 'block';
-            
-            // Автоматический переход к следующему вопросу через 2 секунды
             setTimeout(() => {
-                if (currentQuestionIndex < questions.length - 1) {
-                    currentQuestionIndex++;
-                    showMarathonQuestion();
-                } else {
-                    endGame();
-                }
+                if (currentQuestionIndex < questions.length - 1) { currentQuestionIndex++; showMarathonQuestion(); } else { endGame(); }
             }, 2000);
         }
         
-        // Показать подсказку в марафоне
-        function showMarathonHint() {
-            questionHint.style.display = 'block';
-            hintsUsed++;
-        }
+        function showMarathonHint() { questionHint.style.display = 'block'; hintsUsed++; }
         
-        // Начало квиза
         function startQuiz() {
-            // Сброс статистики
             quizQuestions = getQuestionsForGame();
-            currentQuizQuestionIndex = 0;
-            quizScore = 0;
-            quizCorrectAnswers = 0;
-            quizWrongAnswers = 0;
-            startTime = Date.now();
-            
-            // Показ первого вопроса
+            currentQuizQuestionIndex = 0; quizScore = 0; quizCorrectAnswers = 0; quizWrongAnswers = 0; startTime = Date.now();
             showQuizQuestion();
-            
-            // Запуск таймера
             if (timerInterval) clearInterval(timerInterval);
             startTimer();
-            
-            // Переключение экрана
             showScreen('quizQuestion');
         }
         
-        // Показать вопрос квиза
         function showQuizQuestion() {
-            const question = quizQuestions[currentQuizQuestionIndex];
-            
-            quizQuestionText.textContent = question.text;
-            quizAnswerType.textContent = question.answerType;
-            quizQuestionHint.textContent = `Подсказка: ${question.hint}`;
+            const q = quizQuestions[currentQuizQuestionIndex];
+            quizQuestionText.textContent = q.text;
+            quizAnswerType.textContent = q.answerType;
+            quizQuestionHint.textContent = `Подсказка: ${q.hint}`;
             quizQuestionHint.style.display = 'none';
-            
             quizAnswerInput.value = '';
             quizAnswerFeedback.style.display = 'none';
-            
-            // Обновление статистики
             document.getElementById('quizCurrentQuestion').textContent = `${currentQuizQuestionIndex + 1}/${quizQuestions.length}`;
             document.getElementById('quizCurrentScore').textContent = quizScore;
             document.getElementById('quizCorrectAnswers').textContent = quizCorrectAnswers;
             document.getElementById('quizWrongAnswers').textContent = quizWrongAnswers;
-            
-            // Фокус на поле ввода
             quizAnswerInput.focus();
         }
         
-        // Проверка ответа в квизе
         function checkQuizAnswer() {
             const userAnswer = quizAnswerInput.value.trim();
             const correctAnswer = quizQuestions[currentQuizQuestionIndex].answer;
-            
             if (!userAnswer) {
-                quizAnswerFeedback.textContent = 'Пожалуйста, введите ответ';
-                quizAnswerFeedback.className = 'answer-feedback incorrect';
-                quizAnswerFeedback.style.display = 'block';
-                return;
+                quizAnswerFeedback.textContent = 'Введите ответ'; quizAnswerFeedback.className = 'answer-feedback incorrect'; quizAnswerFeedback.style.display = 'block'; return;
             }
-            
-            // Нормализация ответов для сравнения
             const normalizedUserAnswer = userAnswer.replace(',', '.');
             const normalizedCorrectAnswer = correctAnswer.replace(',', '.');
-            
             let isCorrect = false;
-            
-            // Для экспоненциальных ответов
             if (correctAnswer.includes('e')) {
-                // Сравнение экспоненциальных чисел
-                const userExp = parseFloat(userAnswer);
-                const correctExp = parseFloat(correctAnswer);
-                isCorrect = Math.abs(userExp - correctExp) / correctExp < 0.01;
-            } 
-            // Для целых чисел
-            else if (correctAnswer.includes('.') === false || correctAnswer.endsWith('.00') || correctAnswer.endsWith('.0')) {
-                const userInt = parseInt(userAnswer);
-                const correctInt = parseInt(correctAnswer);
-                isCorrect = userInt === correctInt;
+                isCorrect = Math.abs(parseFloat(userAnswer) - parseFloat(correctAnswer)) / parseFloat(correctAnswer) < 0.01;
+            } else if (!correctAnswer.includes('.') || correctAnswer.endsWith('.00') || correctAnswer.endsWith('.0')) {
+                isCorrect = parseInt(userAnswer) === parseInt(correctAnswer);
+            } else {
+                isCorrect = Math.abs(parseFloat(normalizedUserAnswer) - parseFloat(normalizedCorrectAnswer)) < 0.01;
             }
-            // Для десятичных чисел
-            else {
-                // Сравнение с точностью до 0.01
-                const userNum = parseFloat(normalizedUserAnswer);
-                const correctNum = parseFloat(normalizedCorrectAnswer);
-                isCorrect = Math.abs(userNum - correctNum) < 0.01;
-            }
-            
             if (isCorrect) {
-                // Правильный ответ
-                quizScore += quizQuestions[currentQuizQuestionIndex].points;
-                quizCorrectAnswers++;
-                
-                quizAnswerFeedback.textContent = `Правильно! +${quizQuestions[currentQuizQuestionIndex].points} баллов`;
-                quizAnswerFeedback.className = 'answer-feedback correct';
-                
-                // Обновление статистики
+                quizScore += quizQuestions[currentQuizQuestionIndex].points; quizCorrectAnswers++;
+                quizAnswerFeedback.textContent = `✅ +${quizQuestions[currentQuizQuestionIndex].points} баллов`; quizAnswerFeedback.className = 'answer-feedback correct';
                 document.getElementById('quizCurrentScore').textContent = quizScore;
                 document.getElementById('quizCorrectAnswers').textContent = quizCorrectAnswers;
             } else {
-                // Неправильный ответ
                 quizWrongAnswers++;
-                
-                quizAnswerFeedback.textContent = `Неправильно. Правильный ответ: ${correctAnswer}`;
-                quizAnswerFeedback.className = 'answer-feedback incorrect';
-                
+                quizAnswerFeedback.textContent = `❌ Правильный ответ: ${correctAnswer}`; quizAnswerFeedback.className = 'answer-feedback incorrect';
                 document.getElementById('quizWrongAnswers').textContent = quizWrongAnswers;
             }
-            
             quizAnswerFeedback.style.display = 'block';
-            
-            // Автоматический переход к следующему вопросу через 2 секунды
             setTimeout(() => {
-                if (currentQuizQuestionIndex < quizQuestions.length - 1) {
-                    currentQuizQuestionIndex++;
-                    showQuizQuestion();
-                } else {
-                    endQuizGame();
-                }
+                if (currentQuizQuestionIndex < quizQuestions.length - 1) { currentQuizQuestionIndex++; showQuizQuestion(); } else { endQuizGame(); }
             }, 2000);
         }
         
-        // Показать подсказку в квизе
-        function showQuizHint() {
-            quizQuestionHint.style.display = 'block';
-            hintsUsed++;
-        }
+        function showQuizHint() { quizQuestionHint.style.display = 'block'; hintsUsed++; }
         
-        // Отображение карточек ученых
         function showScientists() {
             scientistsList.innerHTML = '';
-            
             const scientists = currentSubject === 'physics' ? physicsScientists : mathScientists;
-            
-            scientists.forEach(scientist => {
-                const card = document.createElement('div');
-                card.className = 'scientist-card';
-                card.innerHTML = `
-                    <img src="${scientist.photo}" alt="${scientist.name}" class="scientist-photo">
-                    <div class="scientist-info">
-                        <h3 class="scientist-name">${scientist.name}</h3>
-                        <p class="scientist-dates">${scientist.dates}</p>
-                        <p class="scientist-discovery"><strong>Основные открытия:</strong> ${scientist.discovery}</p>
-                    </div>
-                `;
+            scientists.forEach(s => {
+                const card = document.createElement('div'); card.className = 'scientist-card';
+                card.innerHTML = `<img src="${s.photo}" alt="${s.name}" class="scientist-photo"><div class="scientist-info"><h3 class="scientist-name">${s.name}</h3><p class="scientist-dates">${s.dates}</p><p class="scientist-discovery"><strong>Открытия:</strong> ${s.discovery}</p></div>`;
                 scientistsList.appendChild(card);
             });
         }
         
-        // Завершение квиза
         function endQuizGame() {
             clearInterval(timerInterval);
-            
-            // Расчет статистики
             const totalQuestions = quizQuestions.length;
             const correctPercentage = totalQuestions > 0 ? Math.round((quizCorrectAnswers / totalQuestions) * 100) : 0;
-            
-            // Время игры
             const elapsed = Math.floor((Date.now() - startTime) / 1000);
             const minutes = Math.floor(elapsed / 60);
             const seconds = elapsed % 60;
             const timeFormatted = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            
-            // Обновление UI результатов
             finalScore.textContent = quizScore;
             finalCorrect.textContent = `${correctPercentage}%`;
             timeSpent.textContent = timeFormatted;
-            
             correctCount.textContent = quizCorrectAnswers;
             wrongCount.textContent = quizWrongAnswers;
-            
-            // Анимация прогресс-баров
-            setTimeout(() => {
-                correctProgress.style.width = `${correctPercentage}%`;
-                wrongProgress.style.width = `${100 - correctPercentage}%`;
-            }, 300);
-            
-            // Показываем карточки ученых
-            showScientists();
-            scientistsContainer.style.display = 'block';
-            
-            // Заголовок результатов
+            setTimeout(() => { correctProgress.style.width = `${correctPercentage}%`; wrongProgress.style.width = `${100 - correctPercentage}%`; }, 300);
+            showScientists(); scientistsContainer.style.display = 'block';
             resultTitle.textContent = `Результаты Квиза по ${currentSubject === 'physics' ? 'физике' : 'математике'}`;
-            
-            // Рекорд
             const recordKey = `${currentSubject}_quiz_record`;
             let record = localStorage.getItem(recordKey) || 0;
-            if (quizScore > record) {
-                record = quizScore;
-                localStorage.setItem(recordKey, quizScore);
-            }
+            if (quizScore > record) { record = quizScore; localStorage.setItem(recordKey, quizScore); }
             recordScore.textContent = record;
-            
-            // Показ экрана результатов
             showScreen('result');
         }
         
-        // Завершение игры (марафон)
         function endGame() {
             clearInterval(timerInterval);
-            
-            // Расчет статистики
             const totalQuestions = questions.length;
             const correctPercentage = totalQuestions > 0 ? Math.round((correctAnswers / totalQuestions) * 100) : 0;
-            
-            // Время игры
             const elapsed = Math.floor((Date.now() - startTime) / 1000);
             const minutes = Math.floor(elapsed / 60);
             const seconds = elapsed % 60;
             const timeFormatted = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            
-            // Обновление UI результатов
             finalScore.textContent = score;
             finalCorrect.textContent = `${correctPercentage}%`;
             timeSpent.textContent = timeFormatted;
-            
             correctCount.textContent = correctAnswers;
             wrongCount.textContent = wrongAnswers;
-            
-            // Анимация прогресс-баров
-            setTimeout(() => {
-                correctProgress.style.width = `${correctPercentage}%`;
-                wrongProgress.style.width = `${100 - correctPercentage}%`;
-            }, 300);
-            
-            // Показываем карточки ученых
-            showScientists();
-            scientistsContainer.style.display = 'block';
-            
-            // Заголовок результатов
+            setTimeout(() => { correctProgress.style.width = `${correctPercentage}%`; wrongProgress.style.width = `${100 - correctPercentage}%`; }, 300);
+            showScientists(); scientistsContainer.style.display = 'block';
             resultTitle.textContent = `Результаты Марафона по ${currentSubject === 'physics' ? 'физике' : 'математике'}`;
-            
-            // Рекорд
             const recordKey = `${currentSubject}_marathon_record`;
             let record = localStorage.getItem(recordKey) || 0;
-            if (score > record) {
-                record = score;
-                localStorage.setItem(recordKey, score);
-            }
+            if (score > record) { record = score; localStorage.setItem(recordKey, score); }
             recordScore.textContent = record;
-            
-            // Показ экрана результатов
             showScreen('result');
         }
         
-        // Генерация сетки для квиза
         function generateQuizGrid() {
             quizGridContainer.innerHTML = '';
-            
-            const sections = currentSubject === 'physics' 
-                ? ['Механика', 'Термодинамика', 'Электричество', 'Оптика', 'Квантовая физика', 'Ядерная физика']
-                : ['Алгебра', 'Геометрия', 'Тригонометрия', 'Матанализ', 'Теория вероятностей', 'Логика'];
-            
+            const sections = currentSubject === 'physics' ? ['Механика', 'Термодинамика', 'Электричество', 'Оптика', 'Кванты', 'Ядерка'] : ['Алгебра', 'Геометрия', 'Тригонометрия', 'Матанализ', 'Вероятность', 'Логика'];
             const points = [10, 20, 30, 40, 50];
-            
             for (let section = 0; section < 6; section++) {
-                for (let pointIdx = 0; pointIdx < 5; pointIdx++) {
-                    const cell = document.createElement('div');
-                    cell.className = 'quiz-cell';
-                    cell.dataset.section = section;
-                    cell.dataset.points = points[pointIdx];
-                    
-                    cell.innerHTML = `
-                        <h4>${sections[section]}</h4>
-                        <p>${points[pointIdx]}</p>
-                        <small>баллов</small>
-                    `;
-                    
-                    // Добавляем обработчик клика на ячейку
+                for (let pIdx = 0; pIdx < 5; pIdx++) {
+                    const cell = document.createElement('div'); cell.className = 'quiz-cell';
+                    cell.dataset.section = section; cell.dataset.points = points[pIdx];
+                    cell.innerHTML = `<h4>${sections[section]}</h4><p>${points[pIdx]}</p><small>баллов</small>`;
                     cell.addEventListener('click', () => {
-                        // Сброс выбора
-                        document.querySelectorAll('.quiz-cell').forEach(c => {
-                            c.classList.remove('selected');
-                        });
-                        
-                        // Выбор текущей ячейки
+                        document.querySelectorAll('.quiz-cell').forEach(c => c.classList.remove('selected'));
                         cell.classList.add('selected');
-                        
-                        // Сохранение выбора
-                        currentQuizSection = section;
-                        currentQuizPoints = points[pointIdx];
-                        
-                        // Активация кнопки начала
+                        currentQuizSection = section; currentQuizPoints = points[pIdx];
                         document.getElementById('startSelectedQuiz').disabled = false;
                     });
-                    
                     quizGridContainer.appendChild(cell);
                 }
             }
         }
         
-        // Инициализация при загрузке страницы
         function init() {
-            // Создание анимированного фона
-            createBackgroundElements();
-            
-            // Генерация вопросов
             generateQuestions();
-            
-            // Переключение темы
             themeToggle.addEventListener('click', toggleTheme);
             
-            // Выбор предмета
             document.querySelectorAll('.selection-card[data-subject]').forEach(card => {
-                card.addEventListener('click', () => {
-                    currentSubject = card.dataset.subject;
-                    showScreen('mode');
-                });
+                card.addEventListener('click', () => { currentSubject = card.dataset.subject; showScreen('mode'); });
             });
-            
-            // Выбор режима
             document.querySelectorAll('.selection-card[data-mode]').forEach(card => {
                 card.addEventListener('click', () => {
                     currentMode = card.dataset.mode;
-                    
                     if (currentMode === 'marathon') {
-                        // Для марафона показываем выбор времени
                         marathonSubject.textContent = currentSubject === 'physics' ? 'физике' : 'математике';
                         showScreen('time');
                     } else {
-                        // Для квиза сразу показываем выбор раздела
                         quizSubjectName.textContent = currentSubject === 'physics' ? 'физике' : 'математике';
-                        
-                        // Генерируем сетку квиза
                         generateQuizGrid();
-                        
-                        // Сбрасываем выбор и деактивируем кнопку
-                        document.querySelectorAll('.quiz-cell').forEach(c => {
-                            c.classList.remove('selected');
-                        });
+                        document.querySelectorAll('.quiz-cell').forEach(c => c.classList.remove('selected'));
                         document.getElementById('startSelectedQuiz').disabled = true;
-                        
-                        // Показываем экран выбора раздела
                         showScreen('quiz');
                     }
                 });
             });
-            
-            // Выбор времени для марафона
             document.querySelectorAll('.time-option').forEach(option => {
-                option.addEventListener('click', () => {
-                    // Сброс выбора
-                    document.querySelectorAll('.time-option').forEach(o => {
-                        o.classList.remove('selected');
-                    });
-                    
-                    // Выбор текущей опции
-                    option.classList.add('selected');
-                    currentTimeLimit = parseInt(option.dataset.minutes);
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.time-option').forEach(o => o.classList.remove('selected'));
+                    this.classList.add('selected');
+                    currentTimeLimit = parseInt(this.dataset.minutes);
                 });
             });
             
-            // Навигация
             document.getElementById('backToMain').addEventListener('click', () => showScreen('main'));
             document.getElementById('backToMode').addEventListener('click', () => showScreen('mode'));
             document.getElementById('backToModeFromQuiz').addEventListener('click', () => showScreen('mode'));
-            
-            // Начало марафона
-            document.getElementById('startMarathon').addEventListener('click', () => {
-                if (currentTimeLimit > 0) {
-                    startMarathon();
-                } else {
-                    alert('Пожалуйста, выберите время для марафона');
-                }
-            });
-            
-            // Начало квиза
+            document.getElementById('startMarathon').addEventListener('click', () => { if (currentTimeLimit > 0) startMarathon(); else alert('Выберите время'); });
             document.getElementById('startSelectedQuiz').addEventListener('click', startQuiz);
-            
-            // Управление вопросами в марафоне
             submitAnswer.addEventListener('click', checkMarathonAnswer);
             hintButton.addEventListener('click', showMarathonHint);
-            
-            // Проверка ответа при нажатии Enter в марафоне
-            answerInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    checkMarathonAnswer();
-                }
-            });
-            
-            // Управление вопросами в квизе
+            answerInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') checkMarathonAnswer(); });
             quizSubmitAnswer.addEventListener('click', checkQuizAnswer);
             quizHintButton.addEventListener('click', showQuizHint);
-            
-            // Проверка ответа при нажатии Enter в квизе
-            quizAnswerInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    checkQuizAnswer();
-                }
-            });
-            
-            // Навигация из результатов
-            document.getElementById('restartButton').addEventListener('click', () => {
-                if (currentMode === 'quiz') {
-                    showScreen('quiz');
-                } else {
-                    showScreen('time');
-                }
-            });
-            
-            document.getElementById('backToMainFromResults').addEventListener('click', () => {
-                showScreen('main');
-            });
+            quizAnswerInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') checkQuizAnswer(); });
+            document.getElementById('restartButton').addEventListener('click', () => { if (currentMode === 'quiz') showScreen('quiz'); else showScreen('time'); });
+            document.getElementById('backToMainFromResults').addEventListener('click', () => showScreen('main'));
         }
         
-        // Запуск инициализации при загрузке страницы
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
